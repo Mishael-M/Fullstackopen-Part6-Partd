@@ -15,6 +15,14 @@ const AnecdoteForm = () => {
         type: 'NOTIFY',
         notification: `Added anecdote "${newAnecdote.content}"`,
       });
+    },
+    onError: (error) => {
+      dispatch({
+        type: 'NOTIFY',
+        notification: error.response.data.error,
+      });
+    },
+    onSettled: () => {
       setTimeout(() => {
         dispatch({
           type: 'EMPTY',
